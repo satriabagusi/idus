@@ -1,44 +1,97 @@
 @extends('template/main')
-@section('title', 'iDus-Dasboard')
+@section('title', 'iDus - Unauthorized Reseller')
 @section('container')
 
 
 <!-- Carousel -->
-<div class="container">
-  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+<div class="bd-example">
+  <div id="slide" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li  data-slide-to="0" class="active"></li>
+      <li  data-slide-to="1"></li>
+      <li  data-slide-to="2"></li>
+      <li  data-slide-to="3"></li>
+      <li  data-slide-to="4"></li>
+    </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/banner/a.jpg" class="d-block w-80">
+        <a href="">
+        <img src="{{asset('assets/img/banner/1.jpg')}}" width="100%" class="d-block w-250" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="text-dark">Beli sekarang di iDus</p>
+        </div>
+      </a>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/banner/b.jpg" class="d-block w-80">
+        <a href="">
+        <img src="{{asset('assets/img/banner/2.jpg')}}" width="100%" class="d-block w-300" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+        </a>
+        </div>
       </div>
       <div class="carousel-item">
-        <img src="assets/img/banner/c.jpg" class="d-block w-80">
+          <a href="">
+        <img src="{{asset('assets/img/banner/3.jpg')}}" width="100%" class="d-block w-250" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="text-light">Redmi Note 7 dan Note 7 Pro telah Hadir </h5>
+          <p class="text-light">Dual Camera the Perfect Picture taken</p>
+        </div>
+          </a>
+      </div>
+      <div class="carousel-item">
+          <a href="">
+        <img src="{{asset('assets/img/banner/4.jpg')}}" width="100%" class="d-block w-250" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="text-dark">The Perfect and Simple Phone</p>
+        </div>
+          </a>
+      </div>
+      <div class="carousel-item">
+          <a href="">
+        <img src="{{asset('assets/img/banner/5.jpg')}}" width="100%" class="d-block w-250" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="text-dark">For the minimalist user</p>
+        </div>
+          </a>
       </div>
     </div>
+    <a class="carousel-control-prev" href="#slide" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#slide" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
-</div>
+
 <!-- Carousel -->
 
-<!--================Home Banner Area =================-->
-<section class="home_banner_area">
-     <div class="banner_inner d-flex align-items-center">
-         <div class="overlay"></div>
-         <div class="container">
-             <div class="row">
-                 <div class="col-lg-6 offset-lg-6 col-xl-5 offset-xl-7">
-                     <div class="banner_content">
-                         <h1>Explore your passion<br/>Coffee and Laptop is the real of weapon</h1>
-                         <p>Just a seller who sell something like xiaomi :) have a nice day dude.</p>
-                         <a class="banner_btn" href="https://www.instagram.com/anakygterbang">Coba Deh Klik!<i class="ti-arrow-right"></i></a>
-                     </div>
-                 </div>
+ <!-- Content -->
+ <br>
+ <hr class="hr-text" data-content="CONTENT HERE">
 
-             </div>
-         </div>
-     </div>
- </section>
- <!--================End Home Banner Area =================-->
+<div class="container">
+  <div class="row">
+    <div class="col-4" style="margin-right:-2%;">
+        <div class="card" style="width:100%">
+                <img src="{{asset('assets/img/card/phones.jpg')}}" class="card-img-top" alt="...">
+          </div>
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-6">
+            <div class="card" style="width:100%">
+                <img src="{{asset('assets/img/card/acc.jpg')}}" class="card-img-top" alt="...">
+              </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
 @endsection
 
