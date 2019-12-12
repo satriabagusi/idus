@@ -34,12 +34,16 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/">My Account</a>
+                @guest
+              <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">My Account</a>
+              @else
+              <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">My Account</a>
+              @endguest
             </li>
             <li class="nav-item">
               <div class="btn-group">
                 <a class="nav-link" type="button" data-toggle="dropdown" >
-                  <i class="fas fa-search"></i>
+                  <i class="fas fa-search "></i>
                 </a>
                 <div class="dropdown-menu p-2 bg-secondary">
                   <form action="">
@@ -58,8 +62,21 @@
                 <a class="nav-link" type="button" data-toggle="dropdown" >
                   <i class="fas fa-shopping-cart"></i>
                 </a>
-                <div class="dropdown-menu p-2 bg-secondary">
-                  
+                <div class="dropdown-menu p-2">
+                    <p class="text-center"><small>Keranjang Kosong</small></p>
+                <hr>
+                  @guest
+                  <div class="text-center">
+                  <button type="button" class="btn btn-outline-secondary btn-sm text-center rounded" data-toggle="modal" data-target="#loginModal">
+                   <i class="fa fa-user"></i>   Login
+                  </button>
+                  </div>
+                  @else
+                  <div class="text-center">
+                      <p class="text-center"><small>{{Auth::user()->nama}}</small></p>
+                  </div>
+                  @endguest
+
                 </div>
               </div>
             </li>
@@ -77,6 +94,69 @@
     @yield('container')
 
 <!-- container -->
+
+
+
+<!-- Modal Section -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalCenter" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalCenter">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <div class="form-group row">
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row mb-0">
+                    <div class="col-md-5 offset-md-5 text-md-right">
+                        <a class="btn btn-link" href="{{ route('register') }}">
+                            {{ __('Tidak Punya Akun?') }}
+                        </a>
+                        <button type="submit" class="btn btn-success btn-block">
+                            {{ __('Login') }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal Section -->
+
+
 
 
  <!-- ================ start footer Area ================= -->
