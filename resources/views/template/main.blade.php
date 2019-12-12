@@ -34,7 +34,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/account">My Account</a>
+              <a class="nav-link" href="/">My Account</a>
             </li>
             <li class="nav-item">
               <div class="btn-group">
@@ -49,14 +49,21 @@
                         <button class="btn btn-primary rounded-right btn-sm" id="search"><i class="fas fa-search"></i></button>
                       </div>
                     </div>
-                    
                   </form>
                 </div>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+              <div class="btn-group">
+                <a class="nav-link" type="button" data-toggle="dropdown" >
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+                <div class="dropdown-menu p-2 bg-secondary">
+                  
+                </div>
+              </div>
             </li>
+            
           </ul>
         </div>
 
@@ -72,14 +79,8 @@
 <!-- container -->
 
 
-<?php for($i=0; $i<=100; $i++): ?>
-<br>
-<?php endfor; ?>
-
-
-
  <!-- ================ start footer Area ================= -->
- <footer class="footer-area bg-dark">
+ <footer class="footer-area bg-dark mt-5">
         <div class="container">
             <div class="row">
 

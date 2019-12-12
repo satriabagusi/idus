@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of PHPUnit.
  *
@@ -13,9 +13,8 @@ use PHPUnit\Runner\NullTestResultCache;
 
 /**
  * @group test-reorder
- * @small
  */
-final class NullTestResultCacheTest extends TestCase
+class NullTestResultCacheTest extends TestCase
 {
     public function testHasWorkingStubs(): void
     {

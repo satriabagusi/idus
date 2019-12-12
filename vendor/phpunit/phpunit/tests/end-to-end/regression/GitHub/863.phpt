@@ -1,7 +1,8 @@
 --TEST--
 GH-863: Number of tests to run calculated incorrectly when --repeat is used
 --FILE--
-<?php declare(strict_types=1);
+<?php
+
 $_SERVER['argv'][1] = '--no-configuration';
 $_SERVER['argv'][2] = '--repeat';
 $_SERVER['argv'][3] = '50';
@@ -10,6 +11,7 @@ $_SERVER['argv'][5] = \dirname(\dirname(\dirname(__DIR__))) . '/_files/BankAccou
 
 require __DIR__ . '/../../../bootstrap.php';
 PHPUnit\TextUI\Command::main();
+?>
 --EXPECTF--
 PHPUnit %s by Sebastian Bergmann and contributors.
 

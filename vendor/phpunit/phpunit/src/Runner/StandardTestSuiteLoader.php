@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of PHPUnit.
  *
@@ -15,9 +15,9 @@ use PHPUnit\Util\Filesystem;
 use ReflectionClass;
 
 /**
- * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ * The standard test suite loader.
  */
-final class StandardTestSuiteLoader implements TestSuiteLoader
+class StandardTestSuiteLoader implements TestSuiteLoader
 {
     /**
      * @throws Exception
@@ -26,7 +26,6 @@ final class StandardTestSuiteLoader implements TestSuiteLoader
     public function load(string $suiteClassName, string $suiteClassFile = ''): ReflectionClass
     {
         $suiteClassName = \str_replace('.php', '', $suiteClassName);
-        $filename       = null;
 
         if (empty($suiteClassFile)) {
             $suiteClassFile = Filesystem::classNameToFilename(
@@ -44,19 +43,11 @@ final class StandardTestSuiteLoader implements TestSuiteLoader
             );
         }
 
-        if (!empty($loadedClasses) && !\class_exists($suiteClassName, false)) {
+        if (!\class_exists($suiteClassName, false) && !empty($loadedClasses)) {
             $offset = 0 - \strlen($suiteClassName);
 
             foreach ($loadedClasses as $loadedClass) {
-                try {
-                    $class = new ReflectionClass($loadedClass);
-                } catch (\ReflectionException $e) {
-                    throw new Exception(
-                        $e->getMessage(),
-                        (int) $e->getCode(),
-                        $e
-                    );
-                }
+                $class = new ReflectionClass($loadedClass);
 
                 if (\substr($loadedClass, $offset) === $suiteClassName &&
                     $class->getFileName() == $filename) {
@@ -67,20 +58,11 @@ final class StandardTestSuiteLoader implements TestSuiteLoader
             }
         }
 
-        if (!empty($loadedClasses) && !\class_exists($suiteClassName, false)) {
+        if (!\class_exists($suiteClassName, false) && !empty($loadedClasses)) {
             $testCaseClass = TestCase::class;
 
             foreach ($loadedClasses as $loadedClass) {
-                try {
-                    $class = new ReflectionClass($loadedClass);
-                } catch (\ReflectionException $e) {
-                    throw new Exception(
-                        $e->getMessage(),
-                        (int) $e->getCode(),
-                        $e
-                    );
-                }
-
+                $class     = new ReflectionClass($loadedClass);
                 $classFile = $class->getFileName();
 
                 if ($class->isSubclassOf($testCaseClass) && !$class->isAbstract()) {
@@ -93,15 +75,7 @@ final class StandardTestSuiteLoader implements TestSuiteLoader
                 }
 
                 if ($class->hasMethod('suite')) {
-                    try {
-                        $method = $class->getMethod('suite');
-                    } catch (\ReflectionException $e) {
-                        throw new Exception(
-                            $e->getMessage(),
-                            (int) $e->getCode(),
-                            $e
-                        );
-                    }
+                    $method = $class->getMethod('suite');
 
                     if (!$method->isAbstract() && $method->isPublic() && $method->isStatic()) {
                         $suiteClassName = $loadedClass;
@@ -115,15 +89,7 @@ final class StandardTestSuiteLoader implements TestSuiteLoader
         }
 
         if (\class_exists($suiteClassName, false)) {
-            try {
-                $class = new ReflectionClass($suiteClassName);
-            } catch (\ReflectionException $e) {
-                throw new Exception(
-                    $e->getMessage(),
-                    (int) $e->getCode(),
-                    $e
-                );
-            }
+            $class = new ReflectionClass($suiteClassName);
 
             if ($class->getFileName() == \realpath($suiteClassFile)) {
                 return $class;

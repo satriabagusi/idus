@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of PHPUnit.
  *
@@ -11,6 +11,7 @@ namespace PHPUnit\Util\PHP;
 
 use __PHP_Incomplete_Class;
 use ErrorException;
+use PHPUnit\Framework\AssertionFailedError;
 use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\SyntheticError;
 use PHPUnit\Framework\Test;
@@ -20,7 +21,7 @@ use PHPUnit\Framework\TestResult;
 use SebastianBergmann\Environment\Runtime;
 
 /**
- * @internal This class is not covered by the backward compatibility promise for PHPUnit
+ * Utility methods for PHP sub-processes.
  */
 abstract class AbstractPhpProcess
 {
@@ -177,23 +178,6 @@ abstract class AbstractPhpProcess
     public function getCommand(array $settings, string $file = null): string
     {
         $command = $this->runtime->getBinary();
-
-        if ($this->runtime->hasPCOV()) {
-            $settings = \array_merge(
-                $settings,
-                $this->runtime->getCurrentSettings(
-                    \array_keys(\ini_get_all('pcov'))
-                )
-            );
-        } elseif ($this->runtime->hasXdebug()) {
-            $settings = \array_merge(
-                $settings,
-                $this->runtime->getCurrentSettings(
-                    \array_keys(\ini_get_all('xdebug'))
-                )
-            );
-        }
-
         $command .= $this->settingsToParameters($settings);
 
         if (\PHP_SAPI === 'phpdbg') {
@@ -215,7 +199,7 @@ abstract class AbstractPhpProcess
             $command .= ' ' . $this->args;
         }
 
-        if ($this->stderrRedirection) {
+        if ($this->stderrRedirection === true) {
             $command .= ' 2>&1';
         }
 
@@ -254,14 +238,9 @@ abstract class AbstractPhpProcess
                 $time
             );
         } else {
-            \set_error_handler(
-                /**
-                 * @throws ErrorException
-                 */
-                static function ($errno, $errstr, $errfile, $errline): void {
-                    throw new ErrorException($errstr, $errno, $errno, $errfile, $errline);
-                }
-            );
+            \set_error_handler(function ($errno, $errstr, $errfile, $errline): void {
+                throw new ErrorException($errstr, $errno, $errno, $errfile, $errline);
+            });
 
             try {
                 if (\strpos($stdout, "#!/usr/bin/env php\n") === 0) {
@@ -270,6 +249,14 @@ abstract class AbstractPhpProcess
 
                 $childResult = \unserialize(\str_replace("#!/usr/bin/env php\n", '', $stdout));
                 \restore_error_handler();
+
+                if ($childResult === false) {
+                    $result->addFailure(
+                        $test,
+                        new AssertionFailedError('Test was run in child process and ended unexpectedly'),
+                        $time
+                    );
+                }
             } catch (ErrorException $e) {
                 \restore_error_handler();
                 $childResult = false;
@@ -291,8 +278,8 @@ abstract class AbstractPhpProcess
                 $test->setResult($childResult['testResult']);
                 $test->addToAssertionCount($childResult['numAssertions']);
 
+                /** @var TestResult $childResult */
                 $childResult = $childResult['result'];
-                \assert($childResult instanceof  TestResult);
 
                 if ($result->getCollectCodeCoverageInformation()) {
                     $result->getCodeCoverage()->merge(

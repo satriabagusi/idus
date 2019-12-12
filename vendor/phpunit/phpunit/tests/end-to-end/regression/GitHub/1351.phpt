@@ -1,12 +1,13 @@
 --TEST--
 https://github.com/sebastianbergmann/phpunit/issues/1351
 --SKIPIF--
-<?php declare(strict_types=1);
+<?php
 if (!extension_loaded('pdo') || !in_array('sqlite', PDO::getAvailableDrivers())) {
     print 'skip: PDO_SQLITE is required';
 }
+?>
 --FILE--
-<?php declare(strict_types=1);
+<?php
 $_SERVER['argv'][1] = '--no-configuration';
 $_SERVER['argv'][2] = '--process-isolation';
 $_SERVER['argv'][3] = 'Issue1351Test';

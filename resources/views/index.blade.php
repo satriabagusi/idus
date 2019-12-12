@@ -69,22 +69,49 @@
 <!-- Carousel -->
 
  <!-- Content -->
- <br>
- <hr class="hr-text" data-content="CONTENT HERE">
+
+ <div class="container  mt-5 mb-5">
+   <div class="row justify-content-center">
+     <div class="col-5">
+       <hr>
+      </div>
+
+       <div class="col-auto">
+         <h3>Produk</h3>
+       </div>
+
+       <div class="col-5">
+         <hr>
+       </div>
+   </div>
+ </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-4" style="margin-right:-2%;">
+      <a href="">
         <div class="card" style="width:100%">
                 <img src="{{asset('assets/img/card/phones.jpg')}}" class="card-img-top" alt="...">
           </div>
+        </a>
     </div>
     <div class="col-8">
-      <div class="row">
-        <div class="col-6">
-            <div class="card" style="width:100%">
+      <div class="row mb-4">
+        <div class="col-12">
+          <a href="">
+            <div class="card " style="width:100%;">
                 <img src="{{asset('assets/img/card/acc.jpg')}}" class="card-img-top" alt="...">
               </div>
+            </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <a href="">
+            <div class="card" style="width:100%">
+                <img src="{{asset('assets/img/card/laptops.jpg')}}" class="card-img-top" alt="...">
+              </div>
+            </a>
         </div>
       </div>
       

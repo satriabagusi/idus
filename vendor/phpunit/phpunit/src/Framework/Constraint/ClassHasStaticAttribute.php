@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php
 /*
  * This file is part of PHPUnit.
  *
@@ -9,7 +9,6 @@
  */
 namespace PHPUnit\Framework\Constraint;
 
-use PHPUnit\Framework\Exception;
 use ReflectionClass;
 
 /**
@@ -18,7 +17,7 @@ use ReflectionClass;
  *
  * The attribute name is passed in the constructor.
  */
-final class ClassHasStaticAttribute extends ClassHasAttribute
+class ClassHasStaticAttribute extends ClassHasAttribute
 {
     /**
      * Returns a string representation of the constraint.
@@ -39,18 +38,12 @@ final class ClassHasStaticAttribute extends ClassHasAttribute
      */
     protected function matches($other): bool
     {
-        try {
-            $class = new ReflectionClass($other);
+        $class = new ReflectionClass($other);
 
-            if ($class->hasProperty($this->attributeName())) {
-                return $class->getProperty($this->attributeName())->isStatic();
-            }
-        } catch (\ReflectionException $e) {
-            throw new Exception(
-                $e->getMessage(),
-                (int) $e->getCode(),
-                $e
-            );
+        if ($class->hasProperty($this->attributeName())) {
+            $attribute = $class->getProperty($this->attributeName());
+
+            return $attribute->isStatic();
         }
 
         return false;
