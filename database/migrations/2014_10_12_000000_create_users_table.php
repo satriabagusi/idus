@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_role');
+            $table->integer('role_id');
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('alamat');
             $table->string('avatar')->default('avatar.jpg');
             $table->timestamps();
-        });
+            });
     }
 
     /**

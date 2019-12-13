@@ -79,10 +79,13 @@ class RegisterController extends Controller
                 $file->move($destination, $mainFilename.".".$ext);
                 $avatar = $mainFilename.".".$ext;
                 }
+            }else{
+                $avatar = "avatar.png";
             }
-        
+
         return User::create([
             'nama' => $data['nama'],
+            'role_id' => 2,
             'email' => $data['email'],
             'no_hp' => $data['no_hp'],
             'alamat' => $data['alamat'],

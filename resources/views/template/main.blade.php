@@ -62,7 +62,11 @@
             <li class="nav-item">
               <div class="btn-group">
                 <a class="nav-link" type="button" data-toggle="dropdown" >
-                  <i class="fas fa-shopping-cart"></i>
+                  <i class="fas fa-shopping-cart">
+                    <div class="count bg-danger text-center text-light small" style="font-family:QuickSand;position:absolute;padding: 1px 3px 2px;margin-top:-10px;margin-left:10px;font-weight:600;border-radius:90%;">
+                      {{$count}}
+                    </div>
+                  </i>
                 </a>
                 <div class="dropdown-menu">
                     <p class="text-center"><small>Keranjang Kosong</small></p>
@@ -76,7 +80,7 @@
                   @else
                   <div class="text-center">
                       <p class="text-center">
-                        <image src="{{asset('assets/img/user/')}}/{{Auth::user()->avatar}}" width="15%" />
+                        <img src="{{asset('assets/img/user/')}}/{{Auth::user()->avatar}}" width="15%" class="p-0" />
                         <small>
                         {{Auth::user()->nama}}</small></p>
                   </div>

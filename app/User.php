@@ -8,6 +8,15 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+    public function cart(){
+        return $this->belongsTo('App\Cart');
+    }
+
+    public function transaction(){
+        return $this->belongsTo('App\Transaction');
+    }
+
     use Notifiable;
 
     /**
@@ -16,6 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'role_id',
         'nama', 
         'email', 
         'no_hp', 
