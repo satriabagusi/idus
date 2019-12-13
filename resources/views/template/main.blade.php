@@ -39,7 +39,7 @@
                 @guest
               <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">My Account</a>
               @else
-              <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">My Account</a>
+              <a class="nav-link" href="/account">My Account</a>
               @endguest
             </li>
             <li class="nav-item">
@@ -64,7 +64,7 @@
                 <a class="nav-link" type="button" data-toggle="dropdown" >
                   <i class="fas fa-shopping-cart"></i>
                 </a>
-                <div class="dropdown-menu p-2">
+                <div class="dropdown-menu">
                     <p class="text-center"><small>Keranjang Kosong</small></p>
                 <hr>
                   @guest
@@ -75,7 +75,10 @@
                   </div>
                   @else
                   <div class="text-center">
-                      <p class="text-center"><small>{{Auth::user()->nama}}</small></p>
+                      <p class="text-center">
+                        <image src="{{asset('assets/img/user/')}}/{{Auth::user()->avatar}}" width="15%" />
+                        <small>
+                        {{Auth::user()->nama}}</small></p>
                   </div>
                   @endguest
 
@@ -220,47 +223,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="idusModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="idusModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content mx-auto">
-          <div class="modal-body">
-            <div class="header ">
-              <h5 class="modal-title mx-auto" id="idusModalLabel">Login</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-            <!-- Log in -->
-            <form>
-              <div class="form-group">
-                <label for="email" >Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
-              </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="centangMasuk">
-                <label class="form-check-label" for="centangMasuk">Biarkan saya tetap asuk</label>
-              </div>
-              <button type="submit" class="btn btn-primary justify-content-center">Login</button>
-            </form>
-            <div class="divider">
-              <span>OR</span>
-            </div>
-            <!-- End Log in -->
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end Modal -->
   </footer>
-
-
   <!-- ================ End footer Area ================= -->
 
 

@@ -9,114 +9,69 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="border rounded">
-
-                <div class="mt-4 mb-4">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group row">
-                            <label for="nama" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
+                            <label for="nama" class=" col-form-label ">{{ __('Nama Lengkap') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required >
-
+                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}"  >
                                 @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
-    
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required >
-    
+                                <label for="email" class=" col-form-label ">{{ __('E-Mail') }}</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  >
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                            </div>
 
                         
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class=" col-form-label ">{{ __('Password') }}</label>
                             
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required >
+                            
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  >
                                 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
-                        </div>
                         
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                            
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required >
-                            </div>
-                        </div>
+                            <label for="password-confirm" class=" col-form-label ">{{ __('Confirm Password') }}</label>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  >
 
-                        <div class="form-group row">
-                            <label for="no_hp" class="col-md-4 col-form-label text-md-right">{{ __('Nomor Handphone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') }}" required maxlength="14">
-
+                            <label for="no_hp" class=" col-form-label ">{{ __('Nomor Handphone') }}</label>
+                                <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') }}"  maxlength="14">
                                 @error('no_hp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
                         
-                        <div class="form-group row">
-                            <label for="alamat" class="col-md-4 col-form-label text-md-right">{{ __('Alamat Lengkap') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}" required maxlength="14">
-
+                            <label for="alamat" class=" col-form-label ">{{ __('Alamat Lengkap') }}</label>
+                                <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat') }}"  >
                                 @error('alamat')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
-                        </div>
 
-                        <div class=" form-group row">
-                                <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
-
-                                <div class="col-md-6 ml-3 pr-2">
-                                <input type="file" class="custom-file-input" id="avatar" name="avatar" required>
+                                <label for="avatar" class=" col-form-label ">{{ __('Avatar') }}</label>
+                                <div class="col-md-12 pr-2">
+                                <input type="file" accept=".jpg, .png, .jpeg |image/*" class="custom-file-input @error('alamat') is-invalid @enderror" id="avatar" name="avatar" >
                                 <label class="custom-file-label" for="avatar">Pilih foto...</label>
                                 @error('avatar')
-                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                <div class="invalid-feedback">{{$message}}</div>
                                 @enderror
-                              </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary mt-4 offset-md-5">
                                     {{ __('Register') }}
                                 </button>
-                            </div>
-                        </div>
                     </form>
                 </div>
-            </div>
-        </div>
     </div>
 </div>
 @for ($i = 0; $i < 10; $i++)

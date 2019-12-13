@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -37,7 +38,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
+        $this->path = storage_path('app/public/assets/img/user');
     }
 
     /**
@@ -49,13 +51,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255'],
-            'no_hp' => ['required', 'string', 'max:14'],
-            'alamat' => ['required', 'string', 'max:14'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nama' => 'required', 'string', 'max:255',
+            'email' => 'required', 'string', 'max:255',
+            'password' => 'required', 'string', 'min:6', 'confirmed',
+            'no_hp' => 'required', 'string', 'max:14',
+            'alamat' => 'required', 'string', 'max:255',
+            'email' => 'required', 'string', 'email', 'max:255', 'unique:users',
             'avatar' => 'mimes:jpeg,jpg,png|max:300000',
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -67,24 +69,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         if(request()->hasFile('avatar')){
             if (Input::file('avatar')->isValid()) {
                 $file = Input::file('avatar');
-                $destination = 'user/img/';
+                $destination = 'assets/img/user/';
                 $ext= $file->getClientOriginalExtension();
                 $mainFilename = time();
                 $file->move($destination, $mainFilename.".".$ext);
+                $avatar = $mainFilename.".".$ext;
                 }
             }
-
+        
         return User::create([
-            'name' => $data['name'],
+            'nama' => $data['nama'],
             'email' => $data['email'],
             'no_hp' => $data['no_hp'],
             'alamat' => $data['alamat'],
             'alamat' => $data['alamat'],
-            'avatar' => $mainFilename.".".$ext,
+            'avatar' => $avatar,
             'password' => Hash::make($data['password']),
         ]);
+
+        return redirect('/#loginModal');
     }
 }
