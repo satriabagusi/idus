@@ -35,11 +35,23 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ">
                 @guest
-              <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">My Account</a>
+              <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">Akun Saya</a>
               @else
-              <a class="nav-link" href="/account">My Account</a>
+              <div class="btn-group">
+                <a class="nav-link" type="button" data-toggle="dropdown" >
+                  {{Auth::user()->nama}}
+                </a>
+                <div class="dropdown-menu text-center " style="width: 200px !important;padding-top:10px;font-family:'Quicksand';font-weight:700;">
+                    <img src="{{asset('assets/img/user/')}}/{{Auth::user()->avatar}}" width="32px;"/>
+                    <a href="/profile" style="text-decoration:none;">Akun Saya</a>
+                    <hr>
+                    <form action="{{route('logout')}}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-info btn-sm">Keluar</button>
+                    </form>
+              </div>
               @endguest
             </li>
             <li class="nav-item">
@@ -47,7 +59,7 @@
                 <a class="nav-link" type="button" data-toggle="dropdown" >
                   <i class="fas fa-search "></i>
                 </a>
-                <div class="dropdown-menu p-2 bg-secondary">
+                <div class="dropdown-menu p-2 bg-secondary shadow-lg">
                   <form action="">
                     <div class="input-group">
                       <input type="text" class="form-control form-control-sm" id="search" name="search" placeholder="Cari Produk..">
@@ -68,24 +80,23 @@
                     </div>
                   </i>
                 </a>
-                <div class="dropdown-menu">
-                    <p class="text-center"><small>Keranjang Kosong</small></p>
-                <hr>
+                <div class="dropdown-menu pl-4 pr-4">
+                    <p class="text-center">
+                      @if ($count == 0)
+                      <small>Keranjang Kosong</small>
+                        @else
+                        @foreach ($carts as $cart)
+                        <img src="{{asset('assets/img/product/', $cart->product->image)}}" class="rounded float-left" alt="...">
+                        @endforeach
+                      @endif
+                    </p>
                   @guest
-                  <div class="text-center">
+                  <hr>
+
                   <button type="button" class="btn btn-outline-secondary btn-sm text-center rounded" data-toggle="modal" data-target="#loginModal">
                    <i class="fa fa-user"></i>   Login
                   </button>
-                  </div>
-                  @else
-                  <div class="text-center">
-                      <p class="text-center">
-                        <img src="{{asset('assets/img/user/')}}/{{Auth::user()->avatar}}" width="15%" class="p-0" />
-                        <small>
-                        {{Auth::user()->nama}}</small></p>
-                  </div>
                   @endguest
-
                 </div>
               </div>
             </div>

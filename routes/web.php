@@ -11,14 +11,7 @@
 |
 */
 
-use App\Cart;
-use App\User;
-
-Route::get('/', function () {
-    $id = Auth::user()->id;
-    $count = Cart::where('user_id', $id)->count();
-    return view('index', compact('count'));
-});
+Route::get('/', 'PagesController@index');
 Auth::routes();
 
 
