@@ -35,6 +35,10 @@
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="/products">Products</a>
+            </li>
             <li class="nav-item ">
                 @guest
               <a class="nav-link" href="/" data-toggle="modal" data-target="#loginModal">Akun Saya</a>

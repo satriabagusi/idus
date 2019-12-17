@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     /**
@@ -14,8 +15,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()) {
+            $products = Product::all();
+            $id = Auth::user()->id;
+            $count = Cart::where('user_id', $id)->count();
+            $carts = Cart::where('user_id', $id)->get();
+            return view('products/index', compact('count', 'carts', 'products'));
+        }else{
+            $products = Product::all();
+            $count = 0;
+            return view('products/index', compact('count', 'products'));
+        }
     }
+    
 
     /**
      * Show the form for creating a new resource.
