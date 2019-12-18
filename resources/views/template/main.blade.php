@@ -8,13 +8,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title')</title>
   <!-- Bootstrap Css -->
-  <link rel="stylesheet" href="assets/css/bootstrap.css">
-  <link rel="stylesheet" href="assets/css/themify-icons.css">
-  <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="assets/vendors/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="assets/vendors/animate-css/animate.css">
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/vendors/fontawesome/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/vendors/owl-carousel/owl.carousel.min.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/vendors/animate-css/animate.css')}}">
   <!-- Main Css -->
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap" rel="stylesheet">
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 

@@ -2,9 +2,17 @@
 
 @section('container')
 
-<div class="container ">
-    <h1 class="display-4 mt-5">Admin Dashboard</h1>
+<div class="container-fluid">
+    <h1 class="display-4 mt-2">Admin Dashboard</h1>
+
+    <div class="row mt-5">
+        <div class="col">
+            <h5 class="display-5">Selamat Datang, {{Auth::user()->nama}}</h5>
+        </div>
+    </div>
 </div>
+
+
 
 
 

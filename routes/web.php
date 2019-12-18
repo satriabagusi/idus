@@ -14,6 +14,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/products','ProductController@index');
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/add-product', 'AdminController@create');
 Auth::routes();
 
 

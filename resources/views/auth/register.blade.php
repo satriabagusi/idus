@@ -74,7 +74,3 @@
                 </div>
     </div>
 </div>
-@for ($i = 0; $i < 10; $i++)
-    <br>
-@endfor
-@endsection
