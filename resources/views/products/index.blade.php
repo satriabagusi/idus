@@ -2,29 +2,6 @@
 @section('title', 'iDus - Unauthorized Reseller')
 @section('container')
 
-
-<!-- Carousel -->
-<div class="bd-example">
-  <div id="slide" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li  data-slide-to="0" class="active"></li>
-      <li  data-slide-to="1"></li>
-      <li  data-slide-to="2"></li>
-      <li  data-slide-to="3"></li>
-      <li  data-slide-to="4"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <a href="">
-        <img src="{{asset('assets/img/banner/1.jpg')}}" width="100%" class="d-block w-250" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <p class="text-dark">Beli sekarang di iDus</p>
-        </div>
-      </a>
-      </div>
-      
-<!-- Carousel -->
-
  <!-- Content -->
 
  <div class="container  mt-5 mb-5">
@@ -107,6 +84,8 @@
    </div>
  </div>
 
+ </div>
+</div>
 </div>
 
 @endsection
