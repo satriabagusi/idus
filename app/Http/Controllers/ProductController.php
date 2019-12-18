@@ -48,7 +48,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(request()->hasFile('image')){
+            if (Input::file('image')->isValid()) {
+                $file = Input::file('image');
+                $destination = 'assets/img/product/';
+                $ext= $file->getClientOriginalExtension();
+                $mainFilename = time();
+                $file->move($destination, $mainFilename.".".$ext);
+                $image = $mainFilename.".".$ext;
+                }
+            }
+
+        return Product::create([
+            'nama_produk' => $request['nama_produk'],
+            'quantity' => $request['quantity'],
+            'jenis' => $request['jenis'],
+            'harga' => $request['harga'],
+            'deskripsi' => $request['deskripsi'],
+            'image' => $image,
+        ]);
+
+        return redirect('/');
+        }
     }
 
     /**

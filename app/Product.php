@@ -13,4 +13,13 @@ class Product extends Model
     public function cart(){
         return $this->belongsTo('App\Cart');
     }
+
+    protected $fillable = [
+        'nama_produk', 
+        'quantity', 
+        'jenis', 
+        'harga', 
+        'deskripsi', 
+        'image', 
+    ];
 }

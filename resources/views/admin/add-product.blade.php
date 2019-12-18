@@ -7,7 +7,7 @@
 
     <div class="row mt-5 justify-content-center">
         <div class="col-5">
-            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+            <form method="POST" action="" enctype="multipart/form-data">
                 @csrf
                     <label for="nama_produk" class=" col-form-label ">{{ __('Nama Produk') }}</label>
                         <input id="nama_produk" type="text" class="form-control @error('nama_produk') is-invalid @enderror" name="nama_produk" value="{{ old('nama_produk') }}"  >
