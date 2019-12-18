@@ -48,8 +48,12 @@
                   {{Auth::user()->nama}}
                 </a>
                 <div class="dropdown-menu text-center " style="width: 200px !important;padding-top:10px;font-family:'Quicksand';font-weight:700;">
+                  @if (Auth::user()->role_id == 1)
+                    <a href="/admin" style="text-decoration:none;">Admin Dashboard</a>
+                    @else
                     <img src="{{asset('assets/img/user/')}}/{{Auth::user()->avatar}}" width="32px;"/>
                     <a href="/profile" style="text-decoration:none;">Akun Saya</a>
+                    @endif
                     <hr>
                     <form action="{{route('logout')}}" method="post">
                       @csrf
@@ -75,6 +79,7 @@
                 </form>
               </div>
             </li>
+
             <li class="nav-item">
               <div class="btn-group">
                 <a class="nav-link" type="button" data-toggle="dropdown" >
@@ -105,6 +110,7 @@
               </div>
             </div>
           </li>
+            
 
         </ul>
       </div>
@@ -265,7 +271,6 @@
         if ($(this).scrollTop() > 200) {
           $('.navbar').removeClass('bg-transparent');
           $('.navbar').addClass('bg-light');
-
         } else {
           $('.navbar').addClass('bg-transparent');
         }

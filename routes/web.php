@@ -12,9 +12,8 @@
 */
 
 Route::get('/', 'PagesController@index');
-
-
 Route::get('/products','ProductController@index');
+Route::get('/admin', 'AdminController@index');
 Auth::routes();
 
 
