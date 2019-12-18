@@ -34,6 +34,11 @@ class AdminController extends Controller
         return view('admin.add-product');
     }
 
+    public function createAdmin()
+    {
+        return view('admin.add-admin');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -29,7 +29,7 @@
       <div class="list-group list-group-flush">
         <a href="/admin" class="list-group-item list-group-item-action bg-light"><i class="fas fa-home"></i> Home</a>
         <a href="/admin/add-product" class="list-group-item list-group-item-action bg-light"><i class="fas fa-plus"></i> Tambah Produk</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-plus"></i> Tambah Admin</a>
+        <a href="/admin/add-admin" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-plus"></i> Tambah Admin</a>
         <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-exchange-alt"></i> Status Transaksi</a>
         <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-alt"></i> Profile</a>
       </div>
