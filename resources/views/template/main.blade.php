@@ -20,7 +20,7 @@
 
 </head>
 
-<body>
+<body style="font-family:'Quicksand';font-weight:600;">
 
     <!--================Header Menu Area =================-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top " style="font-weight: 600;" style="position:relative;">
@@ -37,7 +37,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="/products">Products</a>
+              <a class="nav-link" href="/products">All Products</a>
             </li>
             <li class="nav-item ">
                 @guest
@@ -68,15 +68,15 @@
                   <i class="fas fa-search "></i>
                 </a>
                 <div class="dropdown-menu p-2 bg-secondary shadow-lg">
-                  <form action="">
+                  <form action="{{route('search')}}">
                     <div class="input-group">
-                      <input type="text" class="form-control form-control-sm" id="search" name="search" placeholder="Cari Produk..">
+                      <input type="text" class="form-control form-control-sm" id="s" name="s" placeholder="Cari Produk..">
                       <div class="input-group-prepend">
-                        <button class="btn btn-primary rounded-right btn-sm" id="search"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-primary rounded-right btn-sm" id="s"><i class="fas fa-search"></i></button>
                       </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </li>
 
@@ -199,7 +199,7 @@
           <h4>About Us</h4>
           <p>iDus adalah aplikasi penjualan suatu produk dengan spesifik barang yang dijual ialah gadget atau biasa di sebut e-commerce yang berbasis web.</p>
           <div class="footer-logo">
-            <img src="assets/img/iDus.png" width="300px">
+            <img src="{{asset('assets/img/iDus.png')}}" width="300px">
           </div>
         </div>
 

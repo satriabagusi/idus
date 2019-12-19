@@ -1,5 +1,5 @@
 @extends('template.admin')
-
+@section('title', 'iDus - Dashboard Admin')
 @section('container')
 
 <div class="container-fluid">

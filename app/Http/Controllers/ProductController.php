@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Cart;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
@@ -37,7 +37,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add-product');
     }
 
     /**
@@ -68,9 +68,11 @@ class ProductController extends Controller
             'image' => $image,
         ]);
 
-        return redirect('/');
+        dd($request);
+
+        return redirect('/admin/add-product');
         }
-    }
+    
 
     /**
      * Display the specified resource.
@@ -80,7 +82,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $search = $product->get('search');
+        $products = Product::where('nama_produk', 'LIKE', '%'.$search.'%')->orWhere('jenis', 'LIKE' , '%'.$search.'%')->orWhere('deskripsi', 'LIKE', '%'.$search.'%');
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -115,5 +119,22 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        if (Auth::user()) {
+            $search = $request->get('s');
+            $products = Product::where('nama_produk', 'LIKE', '%'.$search.'%')->orWhere('jenis', 'LIKE' , '%'.$search.'%')->orWhere('deskripsi', 'LIKE', '%'.$search.'%')->get();
+            $id = Auth::user()->id;
+            $count = Cart::where('user_id', $id)->count();
+            $carts = Cart::where('user_id', $id)->get();
+            return view('products/search', compact('count', 'carts', 'products', 'search'));
+        }else{
+            $search = $request->get('s');
+            $products = Product::where('nama_produk', 'LIKE', '%'.$search.'%')->orWhere('jenis', 'LIKE' , '%'.$search.'%')->orWhere('deskripsi', 'LIKE', '%'.$search.'%')->get();
+            $count = 0;
+            return view('products/search', compact('count', 'products', 'search'));
+        }
     }
 }

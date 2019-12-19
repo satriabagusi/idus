@@ -1,14 +1,16 @@
 @extends('template.admin')
+@section('title', 'iDus - Tambah Admin')
 @section('container')
 
-<div class="row justify-content-center mt-5 mb-5">
-    <div class="col-auto">
-        <h1 class="display-3">Register</h1>
+<div class="container-fluid mt-2">
+    <div class="col-4">
+        <h1 class="display-4">Tambah Admin</h1>
+        <hr>
     </div>
-</div>
+    </div>
 
-<div class="container">
     <div class="row justify-content-center">
+        <div class="col-5">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                             <label for="nama" class=" col-form-label ">{{ __('Nama Lengkap') }}</label>
@@ -72,6 +74,7 @@
                                 </button>
                     </form>
                 </div>
+            </div>
     </div>
 </div>
 

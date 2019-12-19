@@ -31,11 +31,6 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.add-product');
-    }
-
-    public function createAdmin()
-    {
         return view('admin.add-admin');
     }
 

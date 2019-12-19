@@ -1,13 +1,16 @@
 @extends('template.admin')
-
+@section('title', 'iDus - Tambah Produk')
 @section('container')
 
-<div class="container-fluid">
-    <h1 class="display-4 mt-2">Tambah Produk</h1>
+<div class="container-fluid mt-2">
+    <div class="col-4">
+        <h1 class="display-4">Tambah Produk</h1>
+        <hr>
+    </div>
 
     <div class="row mt-5 justify-content-center">
         <div class="col-5">
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form method="POST" action="{{route('add-product')}}" enctype="multipart/form-data">
                 @csrf
                     <label for="nama_produk" class=" col-form-label ">{{ __('Nama Produk') }}</label>
                         <input id="nama_produk" type="text" class="form-control @error('nama_produk') is-invalid @enderror" name="nama_produk" value="{{ old('nama_produk') }}"  >
