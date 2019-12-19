@@ -17,15 +17,17 @@ class ProductController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $products = Product::all();
+            $phones = Product::where('jenis', 'LIKE', 'Handphone')->get();
+            $laptops = Product::where('jenis', 'LIKE', 'Laptop')->get();
+            $accessories = Product::where('jenis', 'LIKE', 'Aksesoris')->get();
             $id = Auth::user()->id;
             $count = Cart::where('user_id', $id)->count();
             $carts = Cart::where('user_id', $id)->get();
-            return view('products/index', compact('count', 'carts', 'products'));
+            return view('products/index', compact('count', 'carts', 'phones', 'laptops', 'accessories'));
         }else{
-            $products = Product::all();
+            $phones = Product::where('jenis', 'LIKE', 'Handphone')->get();
             $count = 0;
-            return view('products/index', compact('count', 'products'));
+            return view('products/index', compact('count', 'phones', 'laptops', 'accessories'));
         }
     }
     
@@ -67,9 +69,7 @@ class ProductController extends Controller
             'deskripsi' => $request['deskripsi'],
             'image' => $image,
         ]);
-
-        dd($request);
-
+    
         return redirect('/admin/add-product');
         }
     

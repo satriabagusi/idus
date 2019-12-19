@@ -71,7 +71,7 @@
                         @enderror
 
                         <button type="submit" class="btn btn-primary mt-4 offset-md-5">
-                            {{ __('Register') }}
+                            {{ __('Tambah Produk') }}
                         </button>
             </form>
         </div>
