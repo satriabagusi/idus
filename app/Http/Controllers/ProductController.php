@@ -26,6 +26,8 @@ class ProductController extends Controller
             return view('products/index', compact('count', 'carts', 'phones', 'laptops', 'accessories'));
         }else{
             $phones = Product::where('jenis', 'LIKE', 'Handphone')->get();
+            $laptops = Product::where('jenis', 'LIKE', 'Laptop')->get();
+            $accessories = Product::where('jenis', 'LIKE', 'Aksesoris')->get();
             $count = 0;
             return view('products/index', compact('count', 'phones', 'laptops', 'accessories'));
         }
@@ -61,7 +63,7 @@ class ProductController extends Controller
                 }
             }
 
-        return Product::create([
+       Product::create([
             'nama_produk' => $request['nama_produk'],
             'quantity' => $request['quantity'],
             'jenis' => $request['jenis'],
