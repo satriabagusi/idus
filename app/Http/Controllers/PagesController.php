@@ -18,9 +18,9 @@ class PagesController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $id = Auth::user()->id;
-            $count = Cart::where('user_id', $id)->count();
-            $carts = Cart::where('user_id', $id)->get();
+            $user_id = Auth::user()->id;
+            $count = Cart::where('user_id', $user_id)->count();
+            $carts = Cart::where('user_id', $user_id)->get();
             return view('index', compact('count', 'carts'));
         }else{
             $count = 0;

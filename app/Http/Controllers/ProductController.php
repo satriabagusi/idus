@@ -20,9 +20,9 @@ class ProductController extends Controller
             $phones = Product::where('jenis', 'LIKE', 'Handphone')->get();
             $laptops = Product::where('jenis', 'LIKE', 'Laptop')->get();
             $accessories = Product::where('jenis', 'LIKE', 'Aksesoris')->get();
-            $id = Auth::user()->id;
-            $count = Cart::where('user_id', $id)->count();
-            $carts = Cart::where('user_id', $id)->get();
+            $user_id = Auth::user()->id;
+            $count = Cart::where('user_id', $user_id)->count();
+            $carts = Cart::where('user_id', $user_id)->get();
             return view('products/index', compact('count', 'carts', 'phones', 'laptops', 'accessories'));
         }else{
             $phones = Product::where('jenis', 'LIKE', 'Handphone')->get();
@@ -86,9 +86,9 @@ class ProductController extends Controller
     {
         if (Auth::user()) {
             $product = Product::find($id);
-            $id = Auth::user()->id;
-            $count = Cart::where('user_id', $id)->count();
-            $carts = Cart::where('user_id', $id)->get();
+            $user_id = Auth::user()->id;
+            $count = Cart::where('user_id', $user_id)->count();
+            $carts = Cart::where('user_id', $user_id)->get();
             return view('products.detail', compact('count', 'product', 'carts'));
         }else{
             $product = Product::find($id);
@@ -136,9 +136,9 @@ class ProductController extends Controller
         if (Auth::user()) {
             $search = $request->get('s');
             $products = Product::where('nama_produk', 'LIKE', '%'.$search.'%')->orWhere('jenis', 'LIKE' , '%'.$search.'%')->orWhere('deskripsi', 'LIKE', '%'.$search.'%')->get();
-            $id = Auth::user()->id;
-            $count = Cart::where('user_id', $id)->count();
-            $carts = Cart::where('user_id', $id)->get();
+            $user_id = Auth::user()->id;
+            $count = Cart::where('user_id', $user_id)->count();
+            $carts = Cart::where('user_id', $user_id)->get();
             return view('products/search', compact('count', 'carts', 'products', 'search'));
         }else{
             $search = $request->get('s');

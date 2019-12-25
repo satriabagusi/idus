@@ -17,6 +17,7 @@ class CreateCartsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();
+            $table->integer('quantity');
             $table->integer('total_harga');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

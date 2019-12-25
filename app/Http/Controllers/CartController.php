@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
 {
@@ -35,7 +36,16 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+       Cart::create([
+            'user_id' => $request['user_id'],
+            'product_id' => $request['product_id'],
+            'quantity' => $request['quantity'],
+            'total_harga' => $request['total_harga']* $request['quantity'],
+        ]);
+    
+        return Redirect::back();
+        
     }
 
     /**
