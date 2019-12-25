@@ -2,7 +2,20 @@
 @section('title', 'iDus - Tambah Admin')
 @section('container')
 
-<div class="container-fluid mt-2">
+<div class="container-fluid mt-2 mb-5">
+    
+    <!-- Alert Session -->
+    @if (Session::has('message'))
+    <div class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissible fade show" role="alert">
+             {{ Session::get('message') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    <!-- Alert Session -->
+
+
     <div class="col-4">
         <h1 class="display-4">Tambah Admin</h1>
         <hr>
@@ -11,7 +24,7 @@
 
     <div class="row justify-content-center">
         <div class="col-5">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('add-admin') }}" enctype="multipart/form-data">
                         @csrf
                             <label for="nama" class=" col-form-label ">{{ __('Nama Lengkap') }}</label>
 
@@ -69,17 +82,16 @@
                                 <div class="invalid-feedback">{{$message}}</div>
                                 @enderror
 
-                                <button type="submit" class="btn btn-primary mt-4 offset-md-5">
-                                    {{ __('Register') }}
+                                <button type="submit" class="btn btn-primary mt-4 mb-5">
+                                    {{ __('Tambah Admin') }}
                                 </button>
                     </form>
                 </div>
             </div>
     </div>
 </div>
+<br>
+<br>
 
-@for ($i = 0; $i < 5; $i++)
-    <br>
-@endfor
 
 @endsection

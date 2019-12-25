@@ -31,7 +31,8 @@
         <a href="/admin/add-product" class="list-group-item list-group-item-action bg-light"><i class="fas fa-plus"></i> Tambah Produk</a>
         <a href="/admin/add-admin" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-plus"></i> Tambah Admin</a>
         <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-exchange-alt"></i> Status Transaksi</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-alt"></i> Profile</a>
+        <a href="/admin/profile/{{Auth::user()->id}}" class="list-group-item list-group-item-action bg-light"><i class="fas fa-user-alt"></i> Profile</a>
+        
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
