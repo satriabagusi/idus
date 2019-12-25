@@ -14,6 +14,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/products','ProductController@index');
 Route::get('/products/search/', 'ProductController@search')->name('search');
+Route::get('/products/detail/{id}', 'ProductController@show');
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/add-product', 'ProductController@create');
 Route::post('/admin/add-product', 'ProductController@store')->name('add-product');

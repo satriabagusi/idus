@@ -82,11 +82,19 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        $search = $product->get('search');
-        $products = Product::where('nama_produk', 'LIKE', '%'.$search.'%')->orWhere('jenis', 'LIKE' , '%'.$search.'%')->orWhere('deskripsi', 'LIKE', '%'.$search.'%');
-        return view('products.index', compact('products'));
+        if (Auth::user()) {
+            $product = Product::find($id);
+            $id = Auth::user()->id;
+            $count = Cart::where('user_id', $id)->count();
+            $carts = Cart::where('user_id', $id)->get();
+            return view('products.detail', compact('count', 'product', 'carts'));
+        }else{
+            $product = Product::find($id);
+            $count = 0;
+            return view('products.detail', compact('count', 'product'));
+        }
     }
 
     /**
