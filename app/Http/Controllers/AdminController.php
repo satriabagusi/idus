@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -137,5 +138,10 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function allTransaction(){
+        $transactions = Transaction::all();
+        return view('admin.transaksi', compact('transactions'));
     }
 }

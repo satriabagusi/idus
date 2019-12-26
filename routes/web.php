@@ -23,7 +23,7 @@ Route::get('/admin/add-admin', 'AdminController@create');
 Route::post('/admin/add-admin/add', 'AdminController@store')->name('add-admin');
 Route::get('/admin/profile/{id}', 'AdminController@show');
 Route::get('/admin/profile/edit/{id}', 'AdminController@edit');
-Route::get('/admin/transactions/', 'TransactionController@index');
+Route::get('/admin/transactions/', 'AdminController@allTransaction');
 Auth::routes();
 
 
