@@ -11,7 +11,7 @@ class Product extends Model
     }
 
     public function cart(){
-        return $this->belongsTo('App\Cart');
+        return $this->hasMany('App\Cart');
     }
 
     protected $fillable = [
