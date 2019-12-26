@@ -45,7 +45,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.profile');
     }
 
     /**
@@ -56,7 +56,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.edit');
     }
 
     /**

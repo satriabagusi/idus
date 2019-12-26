@@ -25,6 +25,8 @@ Route::get('/admin/profile/{id}', 'AdminController@show');
 Route::get('/admin/profile/edit/{id}', 'AdminController@edit');
 Route::get('/admin/transactions/', 'AdminController@allTransaction');
 Route::get('/profile', 'ProfileController@index');
+Route::get('/user/profile/edit/{id}', 'ProfileController@edit');
+Route::get('/user/profile/{id}', 'ProfileController@show');
 Auth::routes();
 
 
