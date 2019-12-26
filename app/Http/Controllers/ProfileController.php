@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Cart;
-use Illuminate\Support\Facades\Auth;
-
-
-class PagesController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +13,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-
-        if (Auth::user()) {
-            $user_id = Auth::user()->id;
-            $count = Cart::where('user_id', $user_id)->count();
-            $carts = Cart::where('user_id', $user_id)->get();
-            return view('index', compact('count', 'carts'));
-           
-
-        }else{
-            $count = 0;
-            return view('index', compact('count'));
-        }
+        return view('user.profile');
     }
 
     /**

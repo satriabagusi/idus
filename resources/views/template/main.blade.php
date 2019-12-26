@@ -51,8 +51,8 @@
                   @if (Auth::user()->role_id == 1)
                     <a href="/admin" style="text-decoration:none;">Admin Dashboard</a>
                     @else
-                    <img src="{{url('assets/img/user/', Auth::user()->avatar)}}" width="32px;"/>
-                    <a href="/profile" style="text-decoration:none;">Akun Saya</a>
+                   
+                    <a href="/profile" style="text-decoration:none;">  <img src="{{url('assets/img/user/', Auth::user()->avatar)}}" width="32px;"/> Akun Saya</a>
                     @endif
                     <hr>
                     <form action="{{route('logout')}}" method="post">
@@ -95,7 +95,7 @@
                       <small>Keranjang Kosong</small>
                         @else
                         @foreach ($carts as $cart)
-                        <img src="{{url('assets/img/product/', $cart->product->image)}}" class="rounded float-left" alt="...">
+                        <img src=" {{url('assets/img/product/', $cart->product->image)}}" class="rounded float-right" width="100px">
                         @endforeach
                       @endif
                     </p>
