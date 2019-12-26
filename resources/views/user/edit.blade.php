@@ -47,6 +47,7 @@
             <label for="no_hp" class="">No HP :</label>
             <input type="text" class="form-control" value=" {{Auth::user()->no_hp}}">
             <br>
+            <button class="btn btn-info btn-block">Ubah</button>
         </form>
         </div>  
     </div>

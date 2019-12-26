@@ -16,6 +16,7 @@ class CartController extends Controller
     public function index()
     {
         //
+        return view('products.cart');
     }
 
     /**
@@ -56,7 +57,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        //
+        return view('products.cart');
     }
 
     /**
