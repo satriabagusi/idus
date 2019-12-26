@@ -22,6 +22,8 @@ class PagesController extends Controller
             $count = Cart::where('user_id', $user_id)->count();
             $carts = Cart::where('user_id', $user_id)->get();
             return view('index', compact('count', 'carts'));
+           
+
         }else{
             $count = 0;
             return view('index', compact('count'));

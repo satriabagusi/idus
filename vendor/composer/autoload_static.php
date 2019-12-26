@@ -22,6 +22,8 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
+        '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
+        'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -37,6 +39,10 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         array (
             'Whoops\\' => 7,
             'Webmozart\\Assert\\' => 17,
+        ),
+        'U' => 
+        array (
+            'UxWeb\\SweetAlert\\' => 17,
         ),
         'T' => 
         array (
@@ -70,6 +76,7 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         ),
         'R' => 
         array (
+            'RealRashid\\SweetAlert\\' => 22,
             'Ramsey\\Uuid\\' => 12,
         ),
         'P' => 
@@ -158,6 +165,10 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'UxWeb\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert',
         ),
         'TijsVerkoyen\\CssToInlineStyles\\' => 
         array (
@@ -254,6 +265,10 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'RealRashid\\SweetAlert\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/realrashid/sweet-alert/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -390,6 +405,7 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -398,7 +414,7 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\TransactionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransactionController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -3158,6 +3174,12 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         'Ramsey\\Uuid\\UuidFactory' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactory.php',
         'Ramsey\\Uuid\\UuidFactoryInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidFactoryInterface.php',
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
+        'RealRashid\\SweetAlert\\Facades\\Alert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Facades/Alert.php',
+        'RealRashid\\SweetAlert\\Storage\\AlertSessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/AlertSessionStore.php',
+        'RealRashid\\SweetAlert\\Storage\\SessionStore' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Storage/SessionStore.php',
+        'RealRashid\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/SweetAlertServiceProvider.php',
+        'RealRashid\\SweetAlert\\ToSweetAlert' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/ToSweetAlert.php',
+        'RealRashid\\SweetAlert\\Toaster' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/Toaster.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -3998,6 +4020,12 @@ class ComposerStaticInit57ba59847e7b9a112730e8319d1d4bee
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'UxWeb\\SweetAlert\\ConvertMessagesIntoSweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/ConvertMessagesIntoSweetAlert.php',
+        'UxWeb\\SweetAlert\\LaravelSessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/LaravelSessionStore.php',
+        'UxWeb\\SweetAlert\\SessionStore' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SessionStore.php',
+        'UxWeb\\SweetAlert\\SweetAlert' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlert.php',
+        'UxWeb\\SweetAlert\\SweetAlertNotifier' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertNotifier.php',
+        'UxWeb\\SweetAlert\\SweetAlertServiceProvider' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/SweetAlertServiceProvider.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'Whoops\\Exception\\ErrorException' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
         'Whoops\\Exception\\Formatter' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Exception/Formatter.php',

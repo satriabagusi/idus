@@ -89,7 +89,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-4" style="margin-right:-2%;">
-      <a href="">
+      <a href="/product">
         <div class="card" style="width:100%">
                 <img src="{{asset('assets/img/card/phones.jpg')}}" class="card-img-top" alt="...">
           </div>
@@ -119,6 +119,8 @@
   </div>
 
 </div>
+@include('sweetalert::alert')
+
 
 @endsection
 

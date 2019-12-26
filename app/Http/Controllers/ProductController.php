@@ -85,7 +85,7 @@ class ProductController extends Controller
     public function show($id)
     {
         if (Auth::user()) {
-            $product = Product::findOr($id);
+            $product = Product::find($id);
             $user_id = Auth::user()->id;
             $count = Cart::where('user_id', $user_id)->count();
             $carts = Cart::where('user_id', $user_id)->get();
