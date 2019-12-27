@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -25,7 +27,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +38,16 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $id = Auth::user()->id;
+        // $sd = Cart::find('user_id', $id)->withTrashed()->get();
+        Transaction::create([
+            'status_pembayaran' => $request['status_pembayaran'],
+            'cart_id' => $request['cart_id'],
+            'user_id' => $request['user_id'],
+            'product_id' => $request['product_id'],
+        ]);
+
+        return redirect('/#pembayaranModal');
     }
 
     /**
@@ -45,9 +56,13 @@ class TransactionController extends Controller
      * @param  \App\Transaction  $transaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show()
     {
-        //
+
+        $id = Auth::user()->id;
+        $carts = Cart::where('user_id', $id)->get();
+        $count = Cart::where('user_id', $id)->count();
+        return view('products/checkout', compact('carts', 'count'));
     }
 
     /**

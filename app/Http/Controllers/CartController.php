@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class CartController extends Controller
@@ -55,9 +56,11 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show()
     {
-        return view('products.cart');
+        $id = Auth::user()->id;
+        $carts = Cart::where('user_id', $id)->get();
+        return view('products.cart', compact('carts'));
     }
 
     /**

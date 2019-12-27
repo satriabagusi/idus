@@ -89,7 +89,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-4" style="margin-right:-2%;">
-      <a href="/product">
+      <a href="products/search?s=handphone">
         <div class="card" style="width:100%">
                 <img src="{{asset('assets/img/card/phones.jpg')}}" class="card-img-top" alt="...">
           </div>
@@ -98,7 +98,7 @@
     <div class="col-8">
       <div class="row mb-4">
         <div class="col-12">
-          <a href="">
+          <a href="products/search?s=aksesoris">
             <div class="card " style="width:100%;">
                 <img src="{{asset('assets/img/card/acc.jpg')}}" class="card-img-top" alt="...">
               </div>
@@ -107,7 +107,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <a href="">
+          <a href="products/search?s=laptop">
             <div class="card" style="width:100%">
                 <img src="{{asset('assets/img/card/laptops.jpg')}}" class="card-img-top" alt="...">
               </div>

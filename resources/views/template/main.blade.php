@@ -88,14 +88,16 @@
                     </div>
                   </i>
                 </a>
-                <div class="dropdown-menu pl-4 pr-4">
+                <div class="dropdown-menu pr-2 pl-2" width="100px">
                     <p class="text-center">
                       @if ($count == 0)
                       <small>Keranjang Kosong</small>
                         @else
                         @foreach ($carts as $cart)
                         <img src=" {{url('assets/img/product/', $cart->product->image)}}" class="rounded float-right" width="50px">
+                        <p>{{$cart->product->nama_produk}}</p>
                         @endforeach
+                        <a href="/products/checkout/{{$cart->id}}" class="btn btn-info">Checkout</a>
                       @endif
                     </p>
                   @guest
@@ -185,6 +187,27 @@
     </div>
   </div>
 <!-- Modal Section -->
+
+<!-- Modal Sukses -->
+<div class="modal fade" id="pembayaranModal" tabindex="-1" role="dialog" aria-labelledby="pembayaranModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pembayaranModalTitle">Pembayaran Sukses </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Pembayaran Sukses !</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- -->
 
 
 

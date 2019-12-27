@@ -10,7 +10,7 @@ class User extends Authenticatable
 {
 
     public function cart(){
-        return $this->belongsTo('App\Cart');
+        return $this->hasMany('App\Cart');
     }
 
     public function transaction(){
